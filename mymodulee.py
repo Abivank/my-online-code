@@ -32,7 +32,7 @@ def delete_movie(kazakh_kino):
     name = input("Жойылатын фильм атауы: ").strip()
     if name in kazakh_kino:
         del kazakh_kino[name]
-        print(f"🗑 {name} фильмі жойылды.")
+        print(f" {name} фильмі жойылды.")
     else:
         print(" Ондай фильм табылмады.")
 
