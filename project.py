@@ -1,4 +1,6 @@
 from mymodolee import add_movie, delete_movie, search_movie, show_all, save_to_file, load_from_file
+import numpy as np
+import matplotlib.pyplot as plt
 
 kazakh_kino = {
     "Байдың баласы": 8.5,
@@ -13,9 +15,19 @@ kazakh_kino = {
     "Райхан": 8.1
 }
 
-
-
 kazakh_kino.update(load_from_file("kazakh_kino.txt"))
+
+def show_graph():
+    names = list(kazakh_kino.keys())
+    ratings = np.array(list(kazakh_kino.values()))
+    plt.figure(figsize=(10,5))
+    plt.plot(names, ratings, marker='o', color='blue')
+    plt.title("Қазақ фильмдерінің рейтингтері")
+    plt.xlabel("Фильм атауы")
+    plt.ylabel("Рейтинг")
+    plt.xticks(rotation=45)
+    plt.grid(True)
+    plt.show()
 
 while True:
     print("\n{ Фильмдер рейтингі жүйесі }")
@@ -23,7 +35,8 @@ while True:
     print("2. Фильмдерді көру")
     print("3. Фильм іздеу")
     print("4. Фильм жою")
-    print("5. Сақтау және шығу")
+    print("5. График көрсету")
+    print("6. Сақтау және шығу")
 
     choice = input("Таңдауыңыз: ")
 
@@ -36,8 +49,10 @@ while True:
     elif choice == "4":
         delete_movie(kazakh_kino)
     elif choice == "5":
+        show_graph()
+    elif choice == "6":
         save_to_file("kazakh_kino.txt", kazakh_kino)
         print("Мәліметтер сақталды. Бағдарлама аяқталды.")
         break
     else:
-        print(" Дұрыс таңдау енгізіңіз.")
+        print("Дұрыс таңдау енгізіңіз.")
