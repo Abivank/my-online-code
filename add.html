@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<body>
+<h1>Добавить фильм</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <p>Страна: <input name="country"></p>
+  <p>Жанр: <input name="genre"></p>
+  <p>Язык: <input name="lang"></p>
+  <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>
