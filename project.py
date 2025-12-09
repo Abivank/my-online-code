@@ -1,4 +1,4 @@
-from mymodolee import add_movie, delete_movie, search_movie, show_all, save_to_file, load_from_file
+from mymodolee import *
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -29,6 +29,8 @@ def show_graph():
     plt.grid(True)
     plt.show()
 
+init_db()
+
 while True:
     print("\n{ Фильмдер рейтингі жүйесі }")
     print("1. Фильм қосу")
@@ -42,8 +44,16 @@ while True:
 
     if choice == "1":
         add_movie(kazakh_kino)
+        name = input("Фильм атауы : ")
+        rating = float(input("Рейтинг: "))
+        country = input("Ел: ")
+        genre = input("Жанр: ")
+        lang = input("Қай тілде көрсетіледі: ")
+        save_movie_to_db(name, rating, country, genre, lang)
+
     elif choice == "2":
-        show_all(kazakh_kino)
+        show_all_from_db()  # <-- енді сүзгілеу қосылды
+
     elif choice == "3":
         search_movie(kazakh_kino)
     elif choice == "4":
